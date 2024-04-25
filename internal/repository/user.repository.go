@@ -2,17 +2,30 @@ package repository
 
 import (
 	"gin-gonic-api/app/domain/dao"
+	"gin-skeleton/internal/models"
 
 	log "github.com/sirupsen/logrus"
 	"gorm.io/gorm"
 )
 
 type UserRepository interface {
+	CommonBehaviorRepository(models.User)
+
 	FindAllUser() ([]dao.User, error)
 	FindUserById(id int) (dao.User, error)
 	Save(user *dao.User) (dao.User, error)
 	DeleteUserById(id int) error
 }
+
+// type usersRepository struct {
+// 	CommonBehaviourRepository[entity.User]
+// }
+
+// func NewUsersRepository(db *gorm.DB) UserRepository {
+// 	return &usersRepository{
+// 		CommonBehaviourRepository: NewCommonBehaviour[entity.User](db),
+// 	}
+// }
 
 type UserRepositoryImpl struct {
 	db *gorm.DB

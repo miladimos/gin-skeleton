@@ -10,3 +10,7 @@ type User struct {
 	Password  string `gorm:"column:password" json:"-"`
 	gorm.Model
 }
+
+func (u *User) Table() string {
+	return "users"
+}

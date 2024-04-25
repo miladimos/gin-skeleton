@@ -1,3 +1,13 @@
+package services
+
+import (
+	"gin-skeleton/internal/repository"
+	"net/http"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
+)
 
 type UserService interface {
 	GetAllUser(c *gin.Context)
@@ -9,6 +19,20 @@ type UserService interface {
 
 type UserServiceImpl struct {
 	userRepository repository.UserRepository
+}
+
+func (u UserServiceImpl) GetAllUser(c *gin.Context) {
+	// defer pkg.PanicHandler(c)
+
+	// logger("start to execute get all data user")
+
+	data, err := u.userRepository.FindAllUser()
+	if err != nil {
+		log.Error("Happened Error when find all user data. Error: ", err)
+		pkg.PanicException(constant.UnknownError)
+	}
+
+	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, data))
 }
 
 func (u UserServiceImpl) UpdateUserData(c *gin.Context) {
@@ -74,20 +98,6 @@ func (u UserServiceImpl) AddUserData(c *gin.Context) {
 	data, err := u.userRepository.Save(&request)
 	if err != nil {
 		log.Error("Happened error when saving data to database. Error", err)
-		pkg.PanicException(constant.UnknownError)
-	}
-
-	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, data))
-}
-
-func (u UserServiceImpl) GetAllUser(c *gin.Context) {
-	defer pkg.PanicHandler(c)
-
-	log.Info("start to execute get all data user")
-
-	data, err := u.userRepository.FindAllUser()
-	if err != nil {
-		log.Error("Happened Error when find all user data. Error: ", err)
 		pkg.PanicException(constant.UnknownError)
 	}
 

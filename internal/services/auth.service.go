@@ -1,6 +1,6 @@
 package services
 
-import "github.com/miladimos/sanjabi/app/repository"
+import "gin-skeleton/internal/repository"
 
 type AuthService interface {
 }
@@ -10,7 +10,7 @@ type authService struct {
 }
 
 func NewAuthRepository(authRepository repository.AuthRepository) AuthService {
-	return &authRepository{
+	return &authService{
 		authRepository: authRepository,
 	}
 }

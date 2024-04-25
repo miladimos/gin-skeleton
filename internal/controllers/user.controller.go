@@ -1,8 +1,9 @@
 package controller
 
 import (
+	services "gin-skeleton/internal/services"
+
 	"github.com/gin-gonic/gin"
-	service "github.com/miladimos/sanjabi/app/services"
 )
 
 type UserController interface {
@@ -14,7 +15,7 @@ type UserController interface {
 }
 
 type UserControllerImpl struct {
-	svc service.UserService
+	svc services.UserService
 }
 
 func (u UserControllerImpl) GetAllUserData(c *gin.Context) {
