@@ -1,6 +1,8 @@
 package app
 
-import "gin-skeleton/internal/routes"
+import (
+	"gin-skeleton/internal/routes"
+)
 
 func Run() {
 	// godotenv.Load()

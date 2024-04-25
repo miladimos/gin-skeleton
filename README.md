@@ -9,5 +9,6 @@
 [] - Users
 [] - JWT
 [] - Redis Caching 
-[] - Rate Limiter 
+[] - Rate Limiter (GCRA) 
+
 

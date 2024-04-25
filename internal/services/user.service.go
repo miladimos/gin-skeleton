@@ -21,6 +21,12 @@ type UserServiceImpl struct {
 	userRepository repository.UserRepository
 }
 
+func UserServiceInit(userRepository repository.UserRepository) *UserServiceImpl {
+	return &UserServiceImpl{
+		userRepository: userRepository,
+	}
+}
+
 func (u UserServiceImpl) GetAllUser(c *gin.Context) {
 	// defer pkg.PanicHandler(c)
 
@@ -117,10 +123,4 @@ func (u UserServiceImpl) DeleteUser(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, pkg.BuildResponse(constant.Success, pkg.Null()))
-}
-
-func UserServiceInit(userRepository repository.UserRepository) *UserServiceImpl {
-	return &UserServiceImpl{
-		userRepository: userRepository,
-	}
 }

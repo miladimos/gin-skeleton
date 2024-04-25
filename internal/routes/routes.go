@@ -21,8 +21,14 @@ func SetupRouter() *gin.Engine {
 	{
 		v1 := api.Group("v1")
 		{
-			v1.GET("/ping", func(c *gin.Context) {
-				c.JSON(http.StatusOK, gin.H{"ping": "pong"})
+			v1.GET("/ping", func(ctx *gin.Context) {
+				ctx.JSON(http.StatusOK, gin.H{"ping": "pong"})
+			})
+
+			v1.Group("/auth", func(ctx *gin.Context) {
+				// ctx.Get("/register",authController.Register)
+				// ctx.Get("/login",authController.Register)
+				// ctx.Get("/logout",authController.Register)
 			})
 
 			// authenticated := v1.Use(middleware.AuthMiddleware())
