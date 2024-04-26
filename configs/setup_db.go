@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func DatabaseInit() *gorm.DB {
+func SetupDatabase() *gorm.DB {
 	// "host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
 	dsn := fmt.Sprintf("postgres://pg:pass@localhost:5432/crud",
 		os.Getenv("DB_USER"),

@@ -1,13 +1,13 @@
-package controller
+package controllers
 
 import (
+	services "gin-skeleton/internal/services"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/miladimos/sanjabi/app/serializers"
 )
 
-type PostController interface {
+type PostControllerInterface interface {
 	Index(context *gin.Context)
 	Read(context *gin.Context)
 	Create(context *gin.Context)
@@ -15,15 +15,20 @@ type PostController interface {
 	Delete(context *gin.Context)
 }
 
-func Get(context *gin.Context) {
-	var registerRequest serializers.RegisterSerializer
-	err := context.ShouldBind(&registerRequest)
-	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	}
-
+type PostController struct {
+	svc *services.PostService
 }
 
-func Index(context *gin.Context) {
-	//
+func NewPostController(postService services.PostService) *PostController {
+	return &PostController{
+		svc: &postService,
+	}
+}
+
+func (controller PostController) Index(context *gin.Context) {
+	context.JSON(http.StatusOK, gin.H{"ping": "posts in controller"})
+}
+
+func (controller *PostController) Get(context *gin.Context) {
+
 }

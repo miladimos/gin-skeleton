@@ -5,7 +5,8 @@ import (
 )
 
 func Run() {
-	// godotenv.Load()
+
+	// configs.SetupDatabase()
 
 	router := routes.SetupRouter()
 	err := router.Run(":8080")

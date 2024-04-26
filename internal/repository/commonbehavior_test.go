@@ -2,11 +2,11 @@ package repository
 
 import (
 	"context"
+	"gin-skeleton/pkg/testutil"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"
-	"mazekav/internal/repository"
-	"mazekav/pkg/testutil"
-	"testing"
 )
 
 type MyTable struct {

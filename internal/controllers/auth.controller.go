@@ -1,14 +1,16 @@
-package controller
+package controllers
 
 import (
+	"gin-skeleton/internal/serializers"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/miladimos/sanjabi/app/serializers"
 )
 
 type AuthenticationController interface {
+	Register(context *gin.Context)
 	Login(context *gin.Context)
+	Logout(context *gin.Context)
 }
 
 func Register(context *gin.Context) {
@@ -21,5 +23,9 @@ func Register(context *gin.Context) {
 }
 
 func Login(context *gin.Context) {
+	//
+}
+
+func Logout(context *gin.Context) {
 	//
 }

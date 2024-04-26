@@ -4,6 +4,7 @@ import (
 	"gin-skeleton/internal/middleware"
 	"net/http"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,7 +14,7 @@ func SetupRouter() *gin.Engine {
 	// log := logrus.New()
 	// r.Use(middle.Logger(log), gin.Recovery())
 
-	// setup middlewares
+	// start middlewares
 
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
@@ -22,6 +23,12 @@ func SetupRouter() *gin.Engine {
 	router.NoRoute(middleware.NoRouteHandler())
 	router.HandleMethodNotAllowed = true
 	router.NoMethod(middleware.NoMethodHandler())
+
+	router.Use(cors.Default())
+
+	// end middlewares
+
+	// routes.AdminRoute(router)
 
 	api := router.Group("/api")
 	{
@@ -37,11 +44,11 @@ func SetupRouter() *gin.Engine {
 				// ctx.POST("/logout",authController.Register)
 			})
 
-			// router.GET("/posts", getArticles)
-			// router.GET("/posts/:id", getArticleOne)
-			// router.POST("/posts", createArticle)
-			// router.PUT("/posts/:id", updateArticle)
-			// router.DELETE("/posts/:id", deleteArticle)
+			// v1.GET("/posts", controller.PostController.Index)
+			// v1.GET("/posts/:id", getArticleOne)
+			// v1.POST("/posts", createArticle)
+			// v1.PUT("/posts/:id", updateArticle)
+			// v1.DELETE("/posts/:id", deleteArticle)
 
 			// authenticated := v1.Use(middleware.AuthMiddleware())
 			// {

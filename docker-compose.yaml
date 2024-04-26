@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  database:
+  main_db:
     container_name: database
     image: postgres:12.8
     restart: always
