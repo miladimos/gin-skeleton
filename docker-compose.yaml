@@ -13,6 +13,17 @@ services:
       - 5432:5432
     volumes:
       - db:/var/lib/postgresql/data 
-
+  my-project-with-air:
+    image: cosmtrek/air
+    # working_dir value has to be the same of mapped volume
+    working_dir: /project-package
+    ports:
+      - <any>:<any>
+    environment:
+      - ENV_A=${ENV_A}
+      - ENV_B=${ENV_B}
+      - ENV_C=${ENV_C}
+    volumes:
+      - ./project-relative-path/:/project-package/
 volumes:
   db:
