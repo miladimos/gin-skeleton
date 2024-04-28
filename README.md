@@ -19,5 +19,8 @@ Enterprise Gin golang project structure
 - [ ] Graphql API 
 - [ ] Object storage 
 - [x] CORS Support
+- [ ] DB Faker
+- [ ] DB Seeder
+- [ ] MultiDriver logger
 
 

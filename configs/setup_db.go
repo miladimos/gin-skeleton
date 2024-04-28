@@ -11,9 +11,13 @@ import (
 )
 
 func SetupDatabase() *gorm.DB {
-	// "host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
-	dsn := fmt.Sprintf("postgres://pg:pass@localhost:5432/crud",
-		os.Getenv("DB_USER"),
+
+	dsn := fmt.Sprintf("postgres://%s:%s@%s:%s/%s",
+		os.Getenv("DB_USERNAME"),
+		os.Getenv("DB_PASSWORD"),
+		os.Getenv("DB_HOST"),
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB_NAME"),
 	)
 
 	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{

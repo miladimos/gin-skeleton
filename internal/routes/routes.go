@@ -11,8 +11,14 @@ import (
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
 
+	// Start logger
 	// log := logrus.New()
-	// r.Use(middle.Logger(log), gin.Recovery())
+	// log.SetReportCaller(true)
+	// logFile, _ := os.Create("log.log")
+	// multiLogWriter := io.MultiWriter(logFile, os.Stdout)
+	// log.SetOutput(multiLogWriter)
+	// r.Use(middle.Logger(log))
+	// End logger
 
 	// start middlewares
 
