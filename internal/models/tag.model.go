@@ -7,8 +7,8 @@ import (
 )
 
 type Tag struct {
-	Title string         `gorm:"column:title;unique" json:"title,omitempty" validate:"required"`
-	Slug  sql.NullString `gorm:"column:slug;unique" json:"slug"`
+	Title string         `gorm:"column:title;uniqueIndex" json:"title,omitempty" validate:"required"`
+	Slug  sql.NullString `gorm:"column:slug;uniqueIndex" json:"slug"`
 	gorm.Model
 }
 

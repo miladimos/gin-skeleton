@@ -4,7 +4,6 @@ import (
 	"gin-skeleton/internal/middleware"
 	"net/http"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -29,8 +28,7 @@ func SetupRouter() *gin.Engine {
 	router.NoRoute(middleware.NoRouteHandler())
 	router.HandleMethodNotAllowed = true
 	router.NoMethod(middleware.NoMethodHandler())
-
-	router.Use(cors.Default())
+	// router.Use(cors.Default())
 
 	// end middlewares
 
