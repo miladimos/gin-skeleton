@@ -17,7 +17,10 @@ func TagList(c *gin.Context) {
 	var tags []models.Tag
 	config.DB.Limit(10).Offset(offset).Find(&tags)
 
-	c.JSON(200, gin.H{"tags": tags})
+	c.JSON(200, gin.H{
+		"tags": tags,
+		// "pagination" : ,
+	})
 }
 
 func TagCreate(c *gin.Context) {

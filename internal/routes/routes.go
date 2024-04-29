@@ -47,6 +47,11 @@ func SetupRouter() *gin.Engine {
 				// ctx.POST("/register",authController.Register)
 				// ctx.POST("/login",authController.Register)
 				// ctx.POST("/logout",authController.Register)
+
+				// ctx.POST("/emails/verify",authController.Register)
+
+				// ctx.POST("/passwords/forgot",authController.Register)
+				// ctx.GET("/passwords/reest",authController.Register)
 			})
 
 			v1.GET("/tags", controllers.TagList)

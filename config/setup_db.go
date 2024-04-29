@@ -30,4 +30,5 @@ func SetupDatabase() {
 	}
 
 	log.Println("Connected to the Database ...")
+
 }
