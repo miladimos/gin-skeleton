@@ -1,4 +1,4 @@
-package ginlogrus
+package middleware
 
 import (
 	"fmt"

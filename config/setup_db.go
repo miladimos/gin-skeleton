@@ -1,17 +1,18 @@
-package configs
+package config
 
 import (
 	"fmt"
+	"log"
 	"os"
-
-	"gin-skeleton/internal/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-func SetupDatabase() *gorm.DB {
+var DB *gorm.DB
 
+func SetupDatabase() {
+	var err error
 	dsn := fmt.Sprintf("postgres://%s:%s@%s:%s/%s",
 		os.Getenv("DB_USERNAME"),
 		os.Getenv("DB_PASSWORD"),
@@ -20,7 +21,7 @@ func SetupDatabase() *gorm.DB {
 		os.Getenv("DB_NAME"),
 	)
 
-	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{
 		SkipDefaultTransaction: false,
 		PrepareStmt:            true,
 	})
@@ -28,9 +29,5 @@ func SetupDatabase() *gorm.DB {
 		panic("Failed to connect to database!")
 	}
 
-	if err := database.AutoMigrate(&models.User{}); err != nil {
-		panic(err)
-	}
-
-	return database
+	log.Println("Connected to the Database ...")
 }

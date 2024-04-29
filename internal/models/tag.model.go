@@ -1,14 +1,12 @@
 package models
 
 import (
-	"database/sql"
-
 	"gorm.io/gorm"
 )
 
 type Tag struct {
-	Title string         `gorm:"column:title;uniqueIndex" json:"title,omitempty" validate:"required"`
-	Slug  sql.NullString `gorm:"column:slug;uniqueIndex" json:"slug"`
+	Title string  `gorm:"column:title;uniqueIndex" json:"title,omitempty" validate:"required"`
+	Slug  *string `gorm:"column:slug;uniqueIndex" json:"slug"`
 	gorm.Model
 }
 

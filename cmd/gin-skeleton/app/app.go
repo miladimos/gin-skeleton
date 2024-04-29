@@ -1,14 +1,18 @@
 package app
 
 import (
-	logger "gin-skeleton/configs/logger"
+	config "gin-skeleton/config"
 	"gin-skeleton/internal/routes"
 )
 
+// logger "gin-skeleton/configs/logger"
+
 func Run() {
 
-	// configs.SetupDatabase()
-	logger.Init()
+	config.SetupEnvVariables()
+	config.SetupDatabase()
+
+	// logger.Init()
 
 	router := routes.SetupRouter()
 	err := router.Run(":8080")

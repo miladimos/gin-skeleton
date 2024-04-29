@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"gin-skeleton/internal/controllers"
 	"gin-skeleton/internal/middleware"
 	"net/http"
 
@@ -47,6 +48,8 @@ func SetupRouter() *gin.Engine {
 				// ctx.POST("/login",authController.Register)
 				// ctx.POST("/logout",authController.Register)
 			})
+
+			v1.GET("/tags", controllers.TagList)
 
 			// v1.GET("/posts", controller.PostController.Index)
 			// v1.GET("/posts/:id", getArticleOne)

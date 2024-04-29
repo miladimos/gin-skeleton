@@ -1,12 +1,12 @@
 package services
 
 import (
-	"fmt"
 	"gin-skeleton/internal/repository"
 	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v5"
 )
 
 type AuthService interface {
@@ -22,7 +22,11 @@ func NewAuthRepository(authRepository repository.AuthRepository) AuthService {
 	}
 }
 
-func handleLogin(c *gin.Context) {
+func Register(c *gin.Context) {
+	//
+}
+
+func Login(c *gin.Context) {
 	// Perform authentication
 	// ...
 
@@ -42,35 +46,4 @@ func handleLogin(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"token": t})
-}
-
-func authenticateMiddleware() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		tokenString := c.GetHeader("Authorization")
-
-		// Parse and validate the token
-		token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-				return nil, fmt.Errorf("unexpected signing method")
-			}
-			return []byte("secret"), nil
-		})
-		if err != nil {
-			c.AbortWithStatus(http.StatusUnauthorized)
-			return
-		}
-
-		// Verify the token
-		if _, ok := token.Claims.(jwt.MapClaims); !ok || !token.Valid {
-			c.AbortWithStatus(http.StatusUnauthorized)
-			return
-		}
-
-		c.Next()
-	}
-}
-
-func handleProtected(c *gin.Context) {
-	// Protected resource handler
-	// ...
 }

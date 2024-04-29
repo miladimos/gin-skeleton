@@ -1,4 +1,4 @@
-package configs
+package config
 
 import (
 	"log"
@@ -7,12 +7,17 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func EnvGet(key string) string {
+func SetupEnvVariables() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
-		panic("Error loading .env file")
+		log.Fatal("Error in loading .env file")
+		panic("Error in loading .env file")
 	}
 
+	log.Println("Env file loaded ...")
+
+}
+
+func EnvGet(key string) string {
 	return os.Getenv(key)
 }
