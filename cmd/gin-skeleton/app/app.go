@@ -15,7 +15,12 @@ func Run() {
 	// logger.Init()
 
 	router := routes.SetupRouter()
-	err := router.Run(":8080")
+
+	port := config.EnvGet("APP_PORT")
+	if port == "" {
+		port = ":8080"
+	}
+	err := router.Run(":%d", port)
 	if err != nil {
 		panic(err)
 	}

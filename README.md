@@ -24,3 +24,18 @@ Enterprise Gin golang project structure
 - [ ] MultiDriver logger
 
 
+
+
+### Swagger docs
+
+1. install swagger lib
+
+```bash
+go get -u github.com/swaggo/swag/cmd/swag
+```
+
+2. generate swagger docs
+
+```bash
+swag init
+```

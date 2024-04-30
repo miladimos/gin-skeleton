@@ -9,7 +9,7 @@ import (
 type User struct {
 	Firstname string         `gorm:"column:firstname" json:"firstname"`
 	Lastname  string         `gorm:"column:lastname" json:"lastname"`
-	Email     string         `gorm:"column:email;unique" json:"email"`
+	Email     string         `gorm:"column:email;unique" json:"email" validate:"required,email"`
 	Mobile    sql.NullString `gorm:"column:mobile;unique" json:"mobile"`
 	Password  string         `gorm:"column:password" json:"-"`
 

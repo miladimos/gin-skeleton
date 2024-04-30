@@ -1,6 +1,8 @@
 package services
 
-import "gin-skeleton/internal/repository"
+import (
+	"gin-skeleton/internal/repository"
+)
 
 type PostService interface {
 }

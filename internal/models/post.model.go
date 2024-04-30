@@ -11,6 +11,7 @@ type Post struct {
 	Slug      sql.NullString `gorm:"column:slug;uniqueIndex" json:"slug"`
 	Body      string         `gorm:"column:body" json:"body"`
 	ViewCount uint           `gorm:"column:view_count" json:"view_count"`
+	// Author    string         `json:'author'`
 	gorm.Model
 }
 

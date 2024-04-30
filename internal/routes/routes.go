@@ -9,6 +9,11 @@ import (
 )
 
 func SetupRouter() *gin.Engine {
+
+	// if !config.App.Debug {
+	// 	gin.SetMode(gin.ReleaseMode)
+	// }
+
 	router := gin.Default()
 
 	// Start logger
@@ -55,15 +60,14 @@ func SetupRouter() *gin.Engine {
 			})
 
 			v1.GET("/tags", controllers.TagList)
-
-			// v1.GET("/posts", controller.PostController.Index)
-			// v1.GET("/posts/:id", getArticleOne)
-			// v1.POST("/posts", createArticle)
-			// v1.PUT("/posts/:id", updateArticle)
-			// v1.DELETE("/posts/:id", deleteArticle)
+			v1.GET("/tags/:id", controllers.TagShow)
+			v1.POST("/tags", controllers.TagCreate)
+			v1.PUT("/posts/:id", controllers.TagUpdate)
+			v1.DELETE("/posts/:id", controllers.TagDelete)
 
 			// authenticated := v1.Use(middleware.AuthMiddleware())
 			// {
+			// authenticated.POST("/accounts", getArticleOne)
 
 			// }
 		}

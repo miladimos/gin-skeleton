@@ -11,11 +11,12 @@ func init() {
 }
 
 func main() {
-	config.DB.AutoMigrate(&models.Tag{})
-	config.DB.AutoMigrate(&models.User{})
-	config.DB.AutoMigrate(&models.Post{})
 
-	// if err := database.AutoMigrate(&models.User{}); err != nil {
-	// 	panic(err)
-	// }
+	if err := config.DB.AutoMigrate(
+		&models.Tag{},
+		&models.User{},
+		&models.Post{},
+	); err != nil {
+		panic(err)
+	}
 }

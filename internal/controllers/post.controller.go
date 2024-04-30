@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"gin-skeleton/internal/models"
 	services "gin-skeleton/internal/services"
 	"net/http"
 
@@ -31,4 +32,13 @@ func (controller PostController) Index(context *gin.Context) {
 
 func (controller *PostController) Get(context *gin.Context) {
 
+}
+
+func (controller *PostController) Create(context *gin.Context) {
+	var post models.Post
+	err := context.ShouldBindJSON(&post)
+	if err != nil {
+		panic(err)
+	}
+	// controller.svc.Create(post)
 }

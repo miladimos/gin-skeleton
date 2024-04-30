@@ -5,8 +5,8 @@ import (
 )
 
 type Tag struct {
-	Title string  `gorm:"column:title;uniqueIndex" json:"title,omitempty" validate:"required"`
-	Slug  *string `gorm:"column:slug;uniqueIndex" json:"slug"`
+	Title string  `gorm:"column:title;unique" json:"title,omitempty" validate:"required" binding:"required,min=3,max=150"`
+	Slug  *string `gorm:"column:slug;unique" json:"slug"`
 	gorm.Model
 }
 

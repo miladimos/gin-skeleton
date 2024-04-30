@@ -10,6 +10,7 @@ import (
 )
 
 type AuthService interface {
+	// Login()
 }
 
 type authService struct {
@@ -22,11 +23,11 @@ func NewAuthRepository(authRepository repository.AuthRepository) AuthService {
 	}
 }
 
-func Register(c *gin.Context) {
+func (service *authService) Register(c *gin.Context) {
 	//
 }
 
-func Login(c *gin.Context) {
+func (service *authService) Login(c *gin.Context) {
 	// Perform authentication
 	// ...
 
