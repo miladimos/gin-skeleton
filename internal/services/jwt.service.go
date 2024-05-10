@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"time"
 
 	"github.com/golang-jwt/jwt/v5"
 )
@@ -20,7 +19,7 @@ type JWTService interface {
 type jwtCustomClaims struct {
 	UserName string `json:"username"`
 	Admin    bool   `json:"admin"`
-	jwt.StandardClaims
+	// jwt.StandardClaims
 }
 
 type jwtService struct {
@@ -49,11 +48,11 @@ func (js *jwtService) GenerateToken(username string, admin bool) string {
 	claims := &jwtCustomClaims{
 		username,
 		admin,
-		jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(time.Hour * 72).Unix(),
-			Issuer:    js.issuer,
-			IssuedAt:  time.Now().Unix(),
-		},
+		// jwt.StandardClaims{
+		// 	ExpiresAt: time.Now().Add(time.Hour * 72).Unix(),
+		// 	Issuer:    js.issuer,
+		// 	IssuedAt:  time.Now().Unix(),
+		// },
 	}
 
 	// Create token with claims

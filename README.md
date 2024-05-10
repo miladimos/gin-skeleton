@@ -10,6 +10,7 @@ Enterprise Gin golang project structure
 - [ ] Email Verification
 - [ ] Forgot Password
 - [ ] Login with OTP Password
+- [ ] OAuth with google
 - [ ] CRUD Posts with Tags
 - [ ] Users - Update Profile 
 - [ ] Redis Caching 
@@ -22,6 +23,7 @@ Enterprise Gin golang project structure
 - [ ] DB Faker
 - [ ] DB Seeder
 - [ ] MultiDriver logger
+- [ ] MultiDriver Database (pgsql - mariadb - mongodb - sqlite)
 
 
 

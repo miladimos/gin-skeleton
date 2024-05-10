@@ -1,4 +1,4 @@
-package repositories
+package repository
 
 import (
 	"errors"
@@ -11,7 +11,9 @@ type BaseRepository struct {
 }
 
 func NewBaseRepository(db *gorm.DB) *BaseRepository {
-	return &BaseRepository{db: db}
+	return &BaseRepository{
+		db: db,
+	}
 }
 
 func (repo *BaseRepository) GetAll(dest interface{}) error {
